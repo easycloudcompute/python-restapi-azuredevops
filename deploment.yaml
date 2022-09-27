@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-restapi
+  namespace: default
+  labels:
+    app: python-restapi
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-restapi
+  template:
+    metadata:
+      labels:
+        app: python-restapi
+    spec:
+      containers:
+      - name: python-restapi
+        image: reg0001.azurecr.io/python-restapi1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: python-restapi
+    labels:
+      app: python-restapi
+spec:
+  selector:
+    app: python-restapi
+  type: LoadBalancer
+  ports:
+    - name: python-restapi
+      targetPort: 8080
+      port: 8080
+      nodePort: 32750
