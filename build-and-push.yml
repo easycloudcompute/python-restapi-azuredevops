@@ -4,7 +4,7 @@ trigger:
 
 # Define variables
 variables:
-  tag: '$(Build.SourceVersion)'
+  tag: '$(Build.BuildId)'
 
 stages:
 - stage: Build
@@ -23,7 +23,7 @@ stages:
         repository: 'python-restapi1'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
-        tags:
+        tags: 
           $(tag)
 
 # Copy files from a source folder to target folder

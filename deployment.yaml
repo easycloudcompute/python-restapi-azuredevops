@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-restapi
+  name: python-restapi-deployment
   namespace: dev
   labels:
     app: python-restapi
@@ -21,12 +21,11 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
-    name: python-restapi
+    name: python-restapi-LoadBalancer-service
     labels:
       app: python-restapi
 spec:
@@ -34,6 +33,5 @@ spec:
     app: python-restapi
   type: LoadBalancer
   ports:
-    - name: python-restapi
-      targetPort: 8080
-      port: 8080
+    targetPort: 8080
+    port: 8080
