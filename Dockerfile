@@ -1,4 +1,4 @@
-# Dockerfile for python-restapi version 1
+# Dockerfile for python-restapi version 2
 FROM python:3
 WORKDIR /opt/app
 COPY app.py .
