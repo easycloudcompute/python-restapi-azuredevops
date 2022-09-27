@@ -4,7 +4,7 @@ trigger:
 
 # Define variables
 variables:
-  tag: '$(Build.BuildId)'
+  tag: '$(Build.SourceVersion)'
 
 stages:
 - stage: Build
