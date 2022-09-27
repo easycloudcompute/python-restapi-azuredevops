@@ -33,5 +33,7 @@ spec:
     app: python-restapi
   type: LoadBalancer
   ports:
-    targetPort: 8080
-    port: 8080
+    - name: python-restapi
+      targetPort: 8080
+      port: 8080
+      nodePort: 32750
